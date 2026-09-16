@@ -13,6 +13,7 @@
                     <a href="#" class="hover:text-red-500 transition">News</a>
                     <a href="#" class="hover:text-red-500 transition">Calendar</a>
                     <a href="#" class="hover:text-red-500 transition">Teams</a>
+                    <a href="circuits.php">Circuits</a>
                     <a href="drivers-table.php" class="hover:text-red-500 transition">Drivers</a>
                 </div>
                 <button class="md:hidden">
