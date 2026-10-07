@@ -1,15 +1,20 @@
 <?php
 //onderstaande code hoort bij opdracht 5 van hoofdstuk 5 blok 3.
 
-function fetchWikipediaPhoto($driverName) {
+function fetchWikipediaPhoto($url) {
     $url = 'https://en.wikipedia.org/w/api.php?' . http_build_query([
         'action' => 'query',
         'format' => 'json',
         'prop' => 'pageimages|info',
         'piprop' => 'original',
         'inprop' => 'url',
-        'titles' => $driverName
+        'titles' => $url,
+        'redirects' => 1 //true
+
     ]);
+
+
+
     
     $options = [
         'http' => [
@@ -24,7 +29,7 @@ function fetchWikipediaPhoto($driverName) {
     
     if (!$response) {
         return [
-            'name' => $driverName,
+            'name' => $url,
             'photo_url' => null,
             'page_url' => null,
             'success' => false
@@ -37,7 +42,7 @@ function fetchWikipediaPhoto($driverName) {
         $page = reset($data['query']['pages']);
         
         return [
-            'name' => $page['title'] ?? $driverName,
+            'name' => $page['title'] ?? $url,
             'photo_url' => $page['original']['source'] ?? null,
             'page_url' => $page['fullurl'] ?? null,
             'success' => isset($page['original']['source'])
@@ -45,7 +50,7 @@ function fetchWikipediaPhoto($driverName) {
     }
     
     return [
-        'name' => $driverName,
+        'name' => $url,
         'photo_url' => null,
         'page_url' => null,
         'success' => false

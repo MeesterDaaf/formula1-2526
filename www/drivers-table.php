@@ -57,7 +57,10 @@ $drivers = mysqli_fetch_all($result, MYSQLI_ASSOC); //zet het om naar een multid
                                         <td class="py-4 px-6 flex items-center">
                                             <img src="http://static.photos/people/200x200/10" alt="Verstappen"
                                                 class="w-10 h-10 rounded-full mr-3">
-                                            <span><?php echo $driver['surname'] ?></span>
+                                            <span>
+                                                <a href="driver_detail.php?id=<?php echo $driver['driverId'] ?>"><?php echo $driver['surname'] ?></a>
+                                                
+                                            </span>
                                         </td>
                                         <td class="py-4 px-6">
                                             <div class="flex items-center">
